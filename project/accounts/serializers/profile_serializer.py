@@ -19,7 +19,7 @@ class ProfileSerializer(serializers.ModelSerializer):
         ]
 
 
-class ProfileSerializerRead(serializers.ModelSerializer):
+class ProfileSerializerPatch(serializers.ModelSerializer):
     user = AccountSerializer(read_only=True)
 
     class Meta:

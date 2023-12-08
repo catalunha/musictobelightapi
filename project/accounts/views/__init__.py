@@ -5,4 +5,8 @@ from accounts.views.account_view import (
     AccountViewNewPassword,
     AccountViewResetPassword,
 )
-from accounts.views.profile_view import ProfileViewDetail, ProfileViewMe
+from accounts.views.profile_view import (
+    ProfileViewDetail,
+    ProfileViewList,
+    ProfileViewMe,
+)
