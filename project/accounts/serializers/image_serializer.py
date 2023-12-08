@@ -11,7 +11,7 @@ class ImageSerializerAll(serializers.ModelSerializer):
         fields = [
             "id",
             "image",
-            "description",
+            "name",
             "extension",
             "size",
             "deleted",

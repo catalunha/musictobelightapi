@@ -23,7 +23,7 @@ class ImageModel(BaseModel):
     image = models.ImageField(
         upload_to=uploadTo,
     )
-    description = models.CharField(
+    name = models.CharField(
         max_length=255,
         blank=True,
         null=True,

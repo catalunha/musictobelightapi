@@ -12,6 +12,7 @@ class ProfileModel(BaseModel):
     )
     name = models.CharField(max_length=255)
     description = models.CharField(max_length=1255)
+    is_coordinator = models.BooleanField(default=False)
     photo = models.ForeignKey(
         ImageModel,
         related_name="profiles",

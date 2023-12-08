@@ -66,6 +66,10 @@ class ProfileViewDetail(APIView):
             "description",
             profileModel.description,
         )
+        profileModel.is_coordinator = profileSerializerPatch.validated_data.get(
+            "is_coordinator",
+            profileModel.is_coordinator,
+        )
         photo = request.data.get("photo")
         if bool(photo):
             print("photo", photo)

@@ -15,6 +15,7 @@ class ProfileSerializer(serializers.ModelSerializer):
             "name",
             "description",
             "photo",
+            "is_coordinator",
             "user",
         ]
 
@@ -29,6 +30,7 @@ class ProfileSerializerPatch(serializers.ModelSerializer):
             "name",
             "description",
             "photo",
+            "is_coordinator",
             "user",
         ]
 
@@ -44,5 +46,6 @@ class ProfileSerializerList(serializers.ModelSerializer):
             "name",
             "description",
             "photo",
+            "is_coordinator",
             "user",
         ]
