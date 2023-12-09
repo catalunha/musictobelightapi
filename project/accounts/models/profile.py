@@ -1,8 +1,8 @@
-from bases.models import BaseModel
 from django.conf import settings
 from django.db import models
 
-from project.accounts.models.image import Image
+from project.bases.models import BaseModel
+from project.medias.models.image import Image
 
 
 class Profile(BaseModel):
@@ -21,3 +21,6 @@ class Profile(BaseModel):
         blank=True,
         null=True,
     )
+
+    def __str__(self) -> str:
+        return f"{self.name}"

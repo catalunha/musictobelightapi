@@ -1,8 +1,3 @@
-from accounts.exceptions import EmailServiceUnavaliable
-from accounts.serializers.account_create_serializer import AccountCreateSerializer
-from accounts.serializers.account_new_password_serializer import (
-    AccountNewPasswordSerializer,
-)
 from django.contrib.auth import get_user_model
 from django.core.mail import send_mail
 from django.shortcuts import get_object_or_404
@@ -11,8 +6,15 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
+from project.accounts.exceptions import EmailServiceUnavaliable
 from project.accounts.models.profile import Profile
 from project.accounts.models.reset_password_number import ResetPasswordNumber
+from project.accounts.serializers.account_create_serializer import (
+    AccountCreateSerializer,
+)
+from project.accounts.serializers.account_new_password_serializer import (
+    AccountNewPasswordSerializer,
+)
 
 
 class AccountViewCreate(APIView):

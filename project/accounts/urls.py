@@ -1,19 +1,20 @@
-from accounts.views.account_view import (
-    AccountViewCreate,
-    AccountViewMe,
-    AccountViewNewPassword,
-    AccountViewResetPassword,
-)
-from accounts.views.profile_view import (
-    ProfileViewDetail,
-    ProfileViewList,
-    ProfileViewMe,
-)
 from django.urls import path
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
     TokenVerifyView,
+)
+
+from project.accounts.views.account_view import (
+    AccountViewCreate,
+    AccountViewMe,
+    AccountViewNewPassword,
+    AccountViewResetPassword,
+)
+from project.accounts.views.profile_view import (
+    ProfileViewDetail,
+    ProfileViewList,
+    ProfileViewMe,
 )
 
 urlpatterns = [

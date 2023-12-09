@@ -1,7 +1,7 @@
-from accounts.serializers.profile_serializer import ProfileSerializerList
-from medias.serializers.image_serializer import ImageSerializerList
 from rest_framework.serializers import ModelSerializer
 
+from project.accounts.serializers.profile_serializer import ProfileSerializerList
+from project.medias.serializers.image_serializer import ImageSerializerList
 from project.musics.models.album import Album
 
 

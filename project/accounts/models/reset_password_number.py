@@ -1,7 +1,8 @@
 import random
 
-from bases.models import BaseModel
 from django.db import models
+
+from project.bases.models import BaseModel
 
 
 def create_number():

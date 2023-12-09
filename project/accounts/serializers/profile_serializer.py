@@ -1,13 +1,16 @@
-from accounts.serializers.account_serializer import AccountSerializer
-from accounts.serializers.image_serializer import ImageSerializerImage
 from rest_framework import serializers
 
 from project.accounts.models.profile import Profile
+from project.accounts.serializers.account_serializer import AccountSerializer
+from project.medias.serializers.image_serializer import (
+    ImageSerializerDetail,
+    ImageSerializerList,
+)
 
 
 class ProfileSerializerDetail(serializers.ModelSerializer):
     user = AccountSerializer(read_only=True)
-    photo = ImageSerializerImage(read_only=True)
+    photo = ImageSerializerDetail(read_only=True)
 
     class Meta:
         model = Profile
@@ -38,7 +41,7 @@ class ProfileSerializerUpsert(serializers.ModelSerializer):
 
 class ProfileSerializerList(serializers.ModelSerializer):
     user = AccountSerializer(read_only=True)
-    photo = ImageSerializerImage(read_only=True)
+    photo = ImageSerializerList(read_only=True)
 
     class Meta:
         model = Profile

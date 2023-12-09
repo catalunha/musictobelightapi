@@ -1,8 +1,9 @@
 import uuid
 
-from accounts.managers import AccountManager
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+
+from project.accounts.managers import AccountManager
 
 
 class Account(AbstractUser):

@@ -1,7 +1,7 @@
-from bases.models import BaseModel
 from django.db import models
 
 from project.accounts.models.profile import Profile
+from project.bases.models import BaseModel
 from project.medias.models.image import Image
 
 
@@ -29,4 +29,8 @@ class Album(BaseModel):
     listeners = models.ManyToManyField(
         Profile,
         related_name="albums_listeners",
+        blank=True,
     )
+
+    def __str__(self) -> str:
+        return f"{self.name}"

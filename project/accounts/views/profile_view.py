@@ -1,15 +1,15 @@
-from accounts.serializers.profile_serializer import (
-    ProfileSerializerDetail,
-    ProfileSerializerList,
-    ProfileSerializerPatch,
-)
 from django.shortcuts import get_object_or_404
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from project.accounts.models.image import Image
 from project.accounts.models.profile import Profile
+from project.accounts.serializers.profile_serializer import (
+    ProfileSerializerDetail,
+    ProfileSerializerList,
+    ProfileSerializerUpsert,
+)
+from project.medias.models.image import Image
 
 
 class ProfileViewList(APIView):
@@ -53,7 +53,7 @@ class ProfileViewDetail(APIView):
             Profile.objects.all(),
             id=id,
         )
-        profileSerializerPatch = ProfileSerializerPatch(
+        profileSerializerPatch = ProfileSerializerUpsert(
             data=request.data,
             partial=True,
         )

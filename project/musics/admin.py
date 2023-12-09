@@ -9,6 +9,7 @@ class AlbumAdmin(admin.ModelAdmin):
     list_display = [
         "id",
         "name",
+        "coordinator",
     ]
 
 

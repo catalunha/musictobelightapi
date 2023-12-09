@@ -1,10 +1,10 @@
-from accounts.serializers.profile_serializer import ProfileSerializerList
-from medias.serializers.audio_serializer import AudioSerializerList
-from medias.serializers.image_serializer import ImageSerializerList
-from musics.serializers.album_serializer import AlbumSerializerList
 from rest_framework.serializers import ModelSerializer
 
+from project.accounts.serializers.profile_serializer import ProfileSerializerList
+from project.medias.serializers.audio_serializer import AudioSerializerList
+from project.medias.serializers.image_serializer import ImageSerializerList
 from project.musics.models.sound import Sound
+from project.musics.serializers.album_serializer import AlbumSerializerList
 
 
 class SoundSerializerList(ModelSerializer):

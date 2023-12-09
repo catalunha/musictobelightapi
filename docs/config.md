@@ -38,7 +38,10 @@ poetry add gunicorn
 
 # run
 
-
+python manager.py makemigrations
+python manager.py migrate
+python manager.py createsuperuser
+python manager.py runserver
 
 
 

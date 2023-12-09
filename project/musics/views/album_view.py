@@ -1,10 +1,5 @@
 from django.db.models import Q
 from django.shortcuts import get_list_or_404, get_object_or_404
-from musics.serializers.album_serializer import (
-    AlbumSerializerDetail,
-    AlbumSerializerList,
-    AlbumSerializerUpsert,
-)
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -12,6 +7,11 @@ from rest_framework.views import APIView
 from project.accounts.models.profile import Profile
 from project.medias.models.image import Image
 from project.musics.models.album import Album
+from project.musics.serializers.album_serializer import (
+    AlbumSerializerDetail,
+    AlbumSerializerList,
+    AlbumSerializerUpsert,
+)
 
 
 class AlbumViewList(APIView):
