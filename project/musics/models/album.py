@@ -21,7 +21,7 @@ class Album(BaseModel):
     )
     image = models.ForeignKey(
         Image,
-        related_name="algums",
+        related_name="albums",
         on_delete=models.PROTECT,
         blank=True,
         null=True,

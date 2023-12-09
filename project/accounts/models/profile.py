@@ -16,7 +16,7 @@ class Profile(BaseModel):
     is_coordinator = models.BooleanField(default=False)
     photo = models.ForeignKey(
         Image,
-        related_name="profile",
+        related_name="profiles",
         on_delete=models.PROTECT,
         blank=True,
         null=True,
