@@ -1,5 +1,6 @@
-from medias.models.audio_model import Audio
 from rest_framework.serializers import ModelSerializer
+
+from project.medias.models.audio import Audio
 
 
 class AudioSerializerList(ModelSerializer):

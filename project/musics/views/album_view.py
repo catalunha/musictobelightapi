@@ -1,6 +1,5 @@
 from django.db.models import Q
 from django.shortcuts import get_list_or_404, get_object_or_404
-from medias.models.image_model import Image
 from musics.serializers.album_serializer import (
     AlbumSerializerDetail,
     AlbumSerializerList,
@@ -11,6 +10,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from project.accounts.models.profile import Profile
+from project.medias.models.image import Image
 from project.musics.models.album import Album
 
 
@@ -29,7 +29,7 @@ class AlbumViewList(APIView):
         albumSerializerUpsert.is_valid(
             raise_exception=True,
         )
-        albumModel = Album.objects.create(
+        album = Album.objects.create(
             name=albumSerializerUpsert.validated_data.get("name"),
             description=albumSerializerUpsert.validated_data.get("description", None),
             coordinator=request.user.profile,
@@ -41,16 +41,16 @@ class AlbumViewList(APIView):
                 image=image,
                 profile=request.user.profile,
             )
-            albumModel.image = imageNew
+            album.image = imageNew
         listeners = request.data.getlist("listeners")
         if bool(listeners):
             print("listeners", listeners)
             for listener in listeners:
                 listenerNew = Profile.objects.get(id=listener)
-                albumModel.listeners.add(listenerNew)
-        albumModel.save()
+                album.listeners.add(listenerNew)
+        album.save()
 
-        Response({"id": albumModel.id})
+        Response({"id": album.id})
 
     def get(self, request):
         print("AlbumViewList.get")

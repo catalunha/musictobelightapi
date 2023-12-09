@@ -1,8 +1,8 @@
 from bases.models import BaseModel
 from django.db import models
-from medias.models.image_model import Image
 
 from project.accounts.models.profile import Profile
+from project.medias.models.image import Image
 
 
 class Album(BaseModel):

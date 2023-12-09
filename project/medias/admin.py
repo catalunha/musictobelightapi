@@ -1,6 +1,7 @@
 from django.contrib import admin
-from medias.models.audio_model import Audio
-from medias.models.image_model import Image
+
+from project.medias.models.audio import Audio
+from project.medias.models.image import Image
 
 
 @admin.register(Image)

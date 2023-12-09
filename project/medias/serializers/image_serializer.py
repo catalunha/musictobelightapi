@@ -1,5 +1,6 @@
-from medias.models.image_model import Image
 from rest_framework.serializers import ModelSerializer
+
+from project.medias.models.image import Image
 
 
 class ImageSerializerList(ModelSerializer):

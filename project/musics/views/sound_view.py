@@ -1,6 +1,4 @@
 from django.shortcuts import get_list_or_404, get_object_or_404
-from medias.models.audio_model import Audio
-from medias.models.image_model import Image
 from musics.serializers.sound_serializer import (
     SoundSerializerDetail,
     SoundSerializerList,
@@ -10,6 +8,8 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
+from project.medias.models.audio import Audio
+from project.medias.models.image import Image
 from project.musics.models.sound import Sound
 
 

@@ -1,9 +1,9 @@
 from bases.models import BaseModel
 from django.db import models
-from medias.models.audio_model import Audio
-from medias.models.image_model import Image
 
 from project.accounts.models.profile import Profile
+from project.medias.models.audio import Audio
+from project.medias.models.image import Image
 from project.musics.models.album import Album
 
 
