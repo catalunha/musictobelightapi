@@ -1,13 +1,14 @@
-from accounts.models.image_model import ImageModel
-from accounts.serializers.profile_serializer import ProfileSerializer
+from accounts.serializers.profile_serializer import ProfileSerializerDetail
 from rest_framework import serializers
+
+from project.accounts.models.image import Image
 
 
 class ImageSerializerAll(serializers.ModelSerializer):
-    profile = ProfileSerializer(read_only=True)
+    profile = ProfileSerializerDetail(read_only=True)
 
     class Meta:
-        model = ImageModel
+        model = Image
         fields = [
             "id",
             "image",
@@ -21,7 +22,7 @@ class ImageSerializerAll(serializers.ModelSerializer):
 
 class ImageSerializerImage(serializers.ModelSerializer):
     class Meta:
-        model = ImageModel
+        model = Image
         fields = [
             "image",
         ]

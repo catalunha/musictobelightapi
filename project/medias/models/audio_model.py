@@ -1,11 +1,12 @@
 from datetime import datetime
 
-from accounts.models.profile_model import ProfileModel
 from bases.models import BaseModel
 from django.db import models
 
+from project.accounts.models.profile import Profile
 
-class AudioModel(BaseModel):
+
+class Audio(BaseModel):
     def uploadTo(instance, fileName):
         fileNameExtension = fileName.split(".")[-1]
         now = datetime.now().strftime("%Y%m%d%M%S%f")
@@ -38,7 +39,7 @@ class AudioModel(BaseModel):
     )
     deleted = models.BooleanField(default=False)
     profile = models.ForeignKey(
-        ProfileModel,
+        Profile,
         related_name="audiosmedia",
         on_delete=models.SET_NULL,
         blank=True,
@@ -46,4 +47,4 @@ class AudioModel(BaseModel):
     )
 
     def __str__(self) -> str:
-        return f"AudioModel: {self.id}"
+        return f"Audio: {self.id}"

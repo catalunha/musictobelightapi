@@ -1,10 +1,11 @@
-from accounts.models.image_model import ImageModel
 from bases.models import BaseModel
 from django.conf import settings
 from django.db import models
 
+from project.accounts.models.image import Image
 
-class ProfileModel(BaseModel):
+
+class Profile(BaseModel):
     user = models.OneToOneField(
         settings.AUTH_USER_MODEL,
         related_name="profile",
@@ -14,7 +15,7 @@ class ProfileModel(BaseModel):
     description = models.CharField(max_length=1255)
     is_coordinator = models.BooleanField(default=False)
     photo = models.ForeignKey(
-        ImageModel,
+        Image,
         related_name="profile",
         on_delete=models.PROTECT,
         blank=True,

@@ -1,9 +1,10 @@
 from django.contrib import admin
-from musics.models.album_model import AlbumModel
-from musics.models.sound_model import SoundModel
+
+from project.musics.models.album import Album
+from project.musics.models.sound import Sound
 
 
-@admin.register(AlbumModel)
+@admin.register(Album)
 class AlbumAdmin(admin.ModelAdmin):
     list_display = [
         "id",
@@ -11,8 +12,8 @@ class AlbumAdmin(admin.ModelAdmin):
     ]
 
 
-@admin.register(SoundModel)
-class SoundModel(admin.ModelAdmin):
+@admin.register(Sound)
+class Sound(admin.ModelAdmin):
     list_display = [
         "id",
         "name",

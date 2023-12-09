@@ -1,10 +1,11 @@
-from accounts.models.account_model import AccountModel
 from rest_framework import serializers
+
+from project.accounts.models.account import Account
 
 
 class AccountSerializer(serializers.ModelSerializer):
     class Meta:
-        model = AccountModel
+        model = Account
         fields = [
             "id",
             "email",

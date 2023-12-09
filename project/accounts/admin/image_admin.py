@@ -1,8 +1,9 @@
-from accounts.models.image_model import ImageModel
 from django.contrib import admin
 
+from project.accounts.models.image import Image
 
-@admin.register(ImageModel)
+
+@admin.register(Image)
 class ImageAdmin(admin.ModelAdmin):
     list_display = [
         "id",

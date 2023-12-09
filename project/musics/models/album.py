@@ -1,10 +1,11 @@
-from accounts.models.profile_model import ProfileModel
 from bases.models import BaseModel
 from django.db import models
-from medias.models.image_model import ImageModel
+from medias.models.image_model import Image
+
+from project.accounts.models.profile import Profile
 
 
-class AlbumModel(BaseModel):
+class Album(BaseModel):
     name = models.CharField(
         max_length=255,
     )
@@ -14,18 +15,18 @@ class AlbumModel(BaseModel):
         null=True,
     )
     coordinator = models.ForeignKey(
-        ProfileModel,
+        Profile,
         related_name="albums_coordinator",
         on_delete=models.CASCADE,
     )
     image = models.ForeignKey(
-        ImageModel,
+        Image,
         related_name="algums",
         on_delete=models.PROTECT,
         blank=True,
         null=True,
     )
     listeners = models.ManyToManyField(
-        ProfileModel,
+        Profile,
         related_name="albums_listeners",
     )

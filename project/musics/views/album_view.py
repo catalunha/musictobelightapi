@@ -1,8 +1,6 @@
-from accounts.models.profile_model import ProfileModel
 from django.db.models import Q
 from django.shortcuts import get_list_or_404, get_object_or_404
-from medias.models.image_model import ImageModel
-from musics.models.album_model import AlbumModel
+from medias.models.image_model import Image
 from musics.serializers.album_serializer import (
     AlbumSerializerDetail,
     AlbumSerializerList,
@@ -11,6 +9,9 @@ from musics.serializers.album_serializer import (
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
+
+from project.accounts.models.profile import Profile
+from project.musics.models.album import Album
 
 
 class AlbumViewList(APIView):
@@ -28,7 +29,7 @@ class AlbumViewList(APIView):
         albumSerializerUpsert.is_valid(
             raise_exception=True,
         )
-        albumModel = AlbumModel.objects.create(
+        albumModel = Album.objects.create(
             name=albumSerializerUpsert.validated_data.get("name"),
             description=albumSerializerUpsert.validated_data.get("description", None),
             coordinator=request.user.profile,
@@ -36,7 +37,7 @@ class AlbumViewList(APIView):
         image = request.data.get("image")
         if bool(image):
             print("image", image)
-            imageNew = ImageModel.objects.create(
+            imageNew = Image.objects.create(
                 image=image,
                 profile=request.user.profile,
             )
@@ -45,7 +46,7 @@ class AlbumViewList(APIView):
         if bool(listeners):
             print("listeners", listeners)
             for listener in listeners:
-                listenerNew = ProfileModel.objects.get(id=listener)
+                listenerNew = Profile.objects.get(id=listener)
                 albumModel.listeners.add(listenerNew)
         albumModel.save()
 
@@ -55,7 +56,7 @@ class AlbumViewList(APIView):
         print("AlbumViewList.get")
         print("request.data", request.data)
         albums = get_list_or_404(
-            AlbumModel.objects.all(),
+            Album.objects.all(),
             Q(coordinator=request.user.profile) | Q(listeners=request.user.profile),
         )
         albumSerializerList = AlbumSerializerList(
@@ -76,7 +77,7 @@ class AlbumViewDetail(APIView):
         print("id", id)
 
         album = get_object_or_404(
-            AlbumModel.objects.all(),
+            Album.objects.all(),
             id=id,
         )
         albumSerializerDetail = AlbumSerializerDetail(
@@ -90,7 +91,7 @@ class AlbumViewDetail(APIView):
         print("id", id)
 
         album = get_object_or_404(
-            AlbumModel.objects.all(),
+            Album.objects.all(),
             id=id,
         )
         albumSerializerUpsert = AlbumSerializerUpsert(
@@ -119,7 +120,7 @@ class AlbumViewDetail(APIView):
                 imageOld = album.image
                 imageOld.deleted = True
                 imageOld.save()
-            imageNew = ImageModel.objects.create(
+            imageNew = Image.objects.create(
                 image=image,
                 profile=request.user.profile,
             )
@@ -129,7 +130,7 @@ class AlbumViewDetail(APIView):
             print("listeners", listeners)
             album.listeners.clear()
             for listener in listeners:
-                listenerNew = ProfileModel.objects.get(id=listener)
+                listenerNew = Profile.objects.get(id=listener)
                 album.listeners.add(listenerNew)
         album.save()
         return Response()
@@ -139,7 +140,7 @@ class AlbumViewDetail(APIView):
         print("request.data", request.data)
         print("id", id)
         album = get_object_or_404(
-            AlbumModel.objects.all(),
+            Album.objects.all(),
             id=id,
         )
         album.delete()

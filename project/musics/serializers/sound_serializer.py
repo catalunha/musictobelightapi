@@ -1,9 +1,10 @@
 from accounts.serializers.profile_serializer import ProfileSerializerList
 from medias.serializers.audio_serializer import AudioSerializerList
 from medias.serializers.image_serializer import ImageSerializerList
-from musics.models.sound_model import SoundModel
 from musics.serializers.album_serializer import AlbumSerializerList
 from rest_framework.serializers import ModelSerializer
+
+from project.musics.models.sound import Sound
 
 
 class SoundSerializerList(ModelSerializer):
@@ -11,7 +12,7 @@ class SoundSerializerList(ModelSerializer):
     author = ProfileSerializerList(read_only=True)
 
     class Meta:
-        model = SoundModel
+        model = Sound
         fields = [
             "id",
             "name",
@@ -27,7 +28,7 @@ class SoundSerializerDetail(ModelSerializer):
     album = AlbumSerializerList(read_only=True)
 
     class Meta:
-        model = SoundModel
+        model = Sound
         fields = [
             "id",
             "name",
@@ -41,7 +42,7 @@ class SoundSerializerDetail(ModelSerializer):
 
 class SoundSerializerUpsert(ModelSerializer):
     class Meta:
-        model = SoundModel
+        model = Sound
         fields = [
             "id",
             "name",

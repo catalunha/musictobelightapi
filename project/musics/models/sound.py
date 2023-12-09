@@ -1,12 +1,13 @@
-from accounts.models.profile_model import ProfileModel
 from bases.models import BaseModel
 from django.db import models
-from medias.models.audio_model import AudioModel
-from medias.models.image_model import ImageModel
-from musics.models.album_model import AlbumModel
+from medias.models.audio_model import Audio
+from medias.models.image_model import Image
+
+from project.accounts.models.profile import Profile
+from project.musics.models.album import Album
 
 
-class SoundModel(BaseModel):
+class Sound(BaseModel):
     name = models.CharField(
         max_length=255,
     )
@@ -16,17 +17,17 @@ class SoundModel(BaseModel):
         null=True,
     )
     author = models.ForeignKey(
-        ProfileModel,
+        Profile,
         related_name="sounds",
         on_delete=models.PROTECT,
     )
     audio = models.ForeignKey(
-        AudioModel,
+        Audio,
         related_name="sounds",
         on_delete=models.PROTECT,
     )
     image = models.ForeignKey(
-        ImageModel,
+        Image,
         related_name="sounds",
         on_delete=models.PROTECT,
         blank=True,
@@ -34,7 +35,7 @@ class SoundModel(BaseModel):
     )
 
     album = models.ForeignKey(
-        AlbumModel,
+        Album,
         related_name="sounds",
         on_delete=models.PROTECT,
     )

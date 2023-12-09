@@ -9,7 +9,7 @@ from accounts.serializers.image_serializer import (
     ImageSerializerImage,
 )
 from accounts.serializers.profile_serializer import (
-    ProfileSerializer,
+    ProfileSerializerDetail,
     ProfileSerializerList,
-    ProfileSerializerRead,
+    ProfileSerializerUpsert,
 )

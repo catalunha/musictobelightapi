@@ -9,7 +9,7 @@ def create_number():
     return number
 
 
-class ResetPasswordNumberModel(BaseModel):
+class ResetPasswordNumber(BaseModel):
     email = models.EmailField()
     number = models.CharField(
         max_length=6,

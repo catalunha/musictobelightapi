@@ -1,14 +1,15 @@
-from accounts.models.account_model import AccountModel
 from django.contrib.auth.forms import UserChangeForm, UserCreationForm
+
+from project.accounts.models.account import Account
 
 
 class AccountCreationForm(UserCreationForm):
     class Meta:
-        model = AccountModel
+        model = Account
         fields = ("email",)
 
 
 class AccountChangeForm(UserChangeForm):
     class Meta:
-        model = AccountModel
+        model = Account
         fields = ("email",)

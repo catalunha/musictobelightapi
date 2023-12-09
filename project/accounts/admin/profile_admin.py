@@ -1,8 +1,9 @@
-from accounts.models.profile_model import ProfileModel
 from django.contrib import admin
 
+from project.accounts.models.profile import Profile
 
-@admin.register(ProfileModel)
+
+@admin.register(Profile)
 class ProfileAdmin(admin.ModelAdmin):
     list_display = [
         "id",

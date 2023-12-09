@@ -4,7 +4,7 @@ from bases.models import BaseModel
 from django.db import models
 
 
-class ImageModel(BaseModel):
+class Image(BaseModel):
     def uploadTo(instance, fileName):
         fileNameExtension = fileName.split(".")[-1]
         now = datetime.now().strftime("%Y$m%d%H%M%S%f")
@@ -42,7 +42,7 @@ class ImageModel(BaseModel):
         null=True,
     )
     profile = models.ForeignKey(
-        "accounts.ProfileModel",
+        "accounts.Profile",
         related_name="images",
         on_delete=models.SET_NULL,
         null=True,

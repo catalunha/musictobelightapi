@@ -1,10 +1,10 @@
-from medias.models.image_model import ImageModel
+from medias.models.image_model import Image
 from rest_framework.serializers import ModelSerializer
 
 
 class ImageSerializerList(ModelSerializer):
     class Meta:
-        model = ImageModel
+        model = Image
         fields = [
             "image",
         ]
@@ -12,7 +12,7 @@ class ImageSerializerList(ModelSerializer):
 
 class ImageSerializerDetail(ModelSerializer):
     class Meta:
-        model = ImageModel
+        model = Image
         fields = [
             "id",
             "image",

@@ -1,9 +1,9 @@
 from django.contrib import admin
-from medias.models.audio_model import AudioModel
-from medias.models.image_model import ImageModel
+from medias.models.audio_model import Audio
+from medias.models.image_model import Image
 
 
-@admin.register(ImageModel)
+@admin.register(Image)
 class ImageAdmin(admin.ModelAdmin):
     list_display = [
         "id",
@@ -11,7 +11,7 @@ class ImageAdmin(admin.ModelAdmin):
     ]
 
 
-@admin.register(AudioModel)
+@admin.register(Audio)
 class AudioAdmin(admin.ModelAdmin):
     list_display = [
         "id",

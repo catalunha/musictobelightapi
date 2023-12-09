@@ -1,7 +1,6 @@
 from django.shortcuts import get_list_or_404, get_object_or_404
-from medias.models.audio_model import AudioModel
-from medias.models.image_model import ImageModel
-from musics.models.sound_model import SoundModel
+from medias.models.audio_model import Audio
+from medias.models.image_model import Image
 from musics.serializers.sound_serializer import (
     SoundSerializerDetail,
     SoundSerializerList,
@@ -10,6 +9,8 @@ from musics.serializers.sound_serializer import (
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
+
+from project.musics.models.sound import Sound
 
 
 class SoundViewList(APIView):
@@ -27,7 +28,7 @@ class SoundViewList(APIView):
         soundSerializerUpsert.is_valid(
             raise_exception=True,
         )
-        soundModel = SoundModel.objects.create(
+        sound = Sound.objects.create(
             name=soundSerializerUpsert.validated_data.get("name"),
             description=soundSerializerUpsert.validated_data.get("description", None),
             author=request.user.profile,
@@ -35,33 +36,33 @@ class SoundViewList(APIView):
         image = request.data.get("image")
         if bool(image):
             print("image", image)
-            imageNew = ImageModel.objects.create(
+            imageNew = Image.objects.create(
                 image=image,
                 profile=request.user.profile,
             )
-            soundModel.image = imageNew
+            sound.image = imageNew
         audio = request.data.get("audio")
         if bool(audio):
             print("audio", audio)
-            audioNew = AudioModel.objects.create(
+            audioNew = Audio.objects.create(
                 audio=audio,
                 profile=request.user.profile,
             )
-            soundModel.audio = audioNew
+            sound.audio = audioNew
 
-        soundModel.save()
+        sound.save()
 
-        Response({"id": soundModel.id})
+        Response({"id": sound.id})
 
     def get(self, request, id):
         print("SoundByAlbumViewList.get")
         print("request.data", request.data)
         albumId = request.GET.get("album", None)
         if albumId is None:
-            sounds = SoundModel.objects.all()
+            sounds = Sound.objects.all()
         else:
             sounds = get_list_or_404(
-                SoundModel.objects.all(),
+                Sound.objects.all(),
                 album=albumId,
             )
         soundSerializerList = SoundSerializerList(
@@ -82,7 +83,7 @@ class SoundViewDetail(APIView):
         print("id", id)
 
         sound = get_object_or_404(
-            SoundModel.objects.all(),
+            Sound.objects.all(),
             id=id,
         )
         soundSerializerDetail = SoundSerializerDetail(
@@ -96,7 +97,7 @@ class SoundViewDetail(APIView):
         print("id", id)
 
         sound = get_object_or_404(
-            SoundModel.objects.all(),
+            Sound.objects.all(),
             id=id,
         )
         soundSerializerUpsert = SoundSerializerUpsert(
@@ -129,7 +130,7 @@ class SoundViewDetail(APIView):
                 imageOld = sound.image
                 imageOld.deleted = True
                 imageOld.save()
-            imageNew = ImageModel.objects.create(
+            imageNew = Image.objects.create(
                 image=image,
                 profile=request.user.profile,
             )
@@ -141,7 +142,7 @@ class SoundViewDetail(APIView):
                 audioOld = sound.audio
                 audioOld.deleted = True
                 audioOld.save()
-            audioNew = AudioModel.objects.create(
+            audioNew = Audio.objects.create(
                 audio=audio,
                 profile=request.user.profile,
             )
@@ -155,7 +156,7 @@ class SoundViewDetail(APIView):
         print("request.data", request.data)
         print("id", id)
         sound = get_object_or_404(
-            SoundModel.objects.all(),
+            Sound.objects.all(),
             id=id,
         )
         sound.delete()

@@ -1,7 +1,8 @@
 from accounts.serializers.profile_serializer import ProfileSerializerList
 from medias.serializers.image_serializer import ImageSerializerList
-from musics.models.album_model import AlbumModel
 from rest_framework.serializers import ModelSerializer
+
+from project.musics.models.album import Album
 
 
 class AlbumSerializerList(ModelSerializer):
@@ -9,7 +10,7 @@ class AlbumSerializerList(ModelSerializer):
     coordinator = ProfileSerializerList(read_only=True)
 
     class Meta:
-        model = AlbumModel
+        model = Album
         fields = [
             "id",
             "name",
@@ -23,7 +24,7 @@ class AlbumSerializerDetail(ModelSerializer):
     listeners = ProfileSerializerList(read_only=True, many=True)
 
     class Meta:
-        model = AlbumModel
+        model = Album
         fields = [
             "id",
             "name",
@@ -36,7 +37,7 @@ class AlbumSerializerDetail(ModelSerializer):
 
 class AlbumSerializerUpsert(ModelSerializer):
     class Meta:
-        model = AlbumModel
+        model = Album
         fields = [
             "id",
             "name",

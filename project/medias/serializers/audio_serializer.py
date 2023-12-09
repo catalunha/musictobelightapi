@@ -1,10 +1,10 @@
-from medias.models.audio_model import AudioModel
+from medias.models.audio_model import Audio
 from rest_framework.serializers import ModelSerializer
 
 
 class AudioSerializerList(ModelSerializer):
     class Meta:
-        model = AudioModel
+        model = Audio
         fields = [
             "audio",
         ]
@@ -12,7 +12,7 @@ class AudioSerializerList(ModelSerializer):
 
 class AudioSerializerDetail(ModelSerializer):
     class Meta:
-        model = AudioModel
+        model = Audio
         fields = [
             "id",
             "audio",

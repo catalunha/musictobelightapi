@@ -1,7 +1,5 @@
-from accounts.models.image_model import ImageModel
-from accounts.models.profile_model import ProfileModel
 from accounts.serializers.profile_serializer import (
-    ProfileSerializer,
+    ProfileSerializerDetail,
     ProfileSerializerList,
     ProfileSerializerPatch,
 )
@@ -9,6 +7,9 @@ from django.shortcuts import get_object_or_404
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
+
+from project.accounts.models.image import Image
+from project.accounts.models.profile import Profile
 
 
 class ProfileViewList(APIView):
@@ -18,9 +19,9 @@ class ProfileViewList(APIView):
         print("ProfileViewList.get")
         print("request.data", request.data)
 
-        profileModelList = ProfileModel.objects.all()
+        profileList = Profile.objects.all()
         profileSerializerList = ProfileSerializerList(
-            profileModelList,
+            profileList,
             many=True,
         )
         return Response(profileSerializerList.data)
@@ -34,12 +35,12 @@ class ProfileViewDetail(APIView):
         print("request.data", request.data)
         print("id", id)
 
-        profileModel = get_object_or_404(
-            ProfileModel.objects.all(),
+        profile = get_object_or_404(
+            Profile.objects.all(),
             id=id,
         )
 
-        profileSerializer = ProfileSerializer(profileModel)
+        profileSerializer = ProfileSerializerDetail(profile)
 
         return Response(profileSerializer.data)
 
@@ -48,8 +49,8 @@ class ProfileViewDetail(APIView):
         print("request.data", request.data)
         print("id", id)
 
-        profileModel = get_object_or_404(
-            ProfileModel.objects.all(),
+        profile = get_object_or_404(
+            Profile.objects.all(),
             id=id,
         )
         profileSerializerPatch = ProfileSerializerPatch(
@@ -58,34 +59,34 @@ class ProfileViewDetail(APIView):
         )
         profileSerializerPatch.is_valid(raise_exception=True)
 
-        profileModel.name = profileSerializerPatch.validated_data.get(
+        profile.name = profileSerializerPatch.validated_data.get(
             "name",
-            profileModel.name,
+            profile.name,
         )
-        profileModel.description = profileSerializerPatch.validated_data.get(
+        profile.description = profileSerializerPatch.validated_data.get(
             "description",
-            profileModel.description,
+            profile.description,
         )
-        profileModel.is_coordinator = profileSerializerPatch.validated_data.get(
+        profile.is_coordinator = profileSerializerPatch.validated_data.get(
             "is_coordinator",
-            profileModel.is_coordinator,
+            profile.is_coordinator,
         )
         photo = request.data.get("photo")
         if bool(photo):
             print("photo", photo)
-            if profileModel.photo is not None:
-                photoOld = profileModel.photo
+            if profile.photo is not None:
+                photoOld = profile.photo
                 photoOld.deleted = True
                 photoOld.save()
-            photoNew = ImageModel.objects.create(
+            photoNew = Image.objects.create(
                 image=photo,
-                profile=profileModel,
+                profile=profile,
             )
-            profileModel.photo = photoNew
+            profile.photo = photoNew
 
-        profileModel.save()
+        profile.save()
 
-        profileSerializer = ProfileSerializer(profileModel)
+        profileSerializer = ProfileSerializerDetail(profile)
 
         return Response(profileSerializer.data)
 
@@ -99,5 +100,5 @@ class ProfileViewMe(APIView):
 
         user = self.request.user
         profile = user.profiles
-        profileSerializer = ProfileSerializer(profile)
+        profileSerializer = ProfileSerializerDetail(profile)
         return Response(profileSerializer.data)

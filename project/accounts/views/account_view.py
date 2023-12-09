@@ -1,6 +1,4 @@
 from accounts.exceptions import EmailServiceUnavaliable
-from accounts.models.profile_model import ProfileModel
-from accounts.models.reset_password_number_model import ResetPasswordNumberModel
 from accounts.serializers.account_create_serializer import AccountCreateSerializer
 from accounts.serializers.account_new_password_serializer import (
     AccountNewPasswordSerializer,
@@ -12,6 +10,9 @@ from rest_framework.exceptions import ParseError, Throttled
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
+
+from project.accounts.models.profile import Profile
+from project.accounts.models.reset_password_number import ResetPasswordNumber
 
 
 class AccountViewCreate(APIView):
@@ -33,7 +34,7 @@ class AccountViewCreate(APIView):
         return Response({"id": user.id})
 
     def _createProfile(slef, user):
-        ProfileModel.objects.create(user=user)
+        Profile.objects.create(user=user)
 
 
 class AccountViewMe(APIView):
@@ -79,11 +80,11 @@ class AccountViewResetPassword(APIView):
         updated = True
         if not updated:
             raise Throttled(wait=60 * 60)
-        ResetPasswordNumberModel.objects.filter(email=email).delete()
-        resetPasswordNumberModel = ResetPasswordNumberModel.objects.create(
+        ResetPasswordNumber.objects.filter(email=email).delete()
+        resetPasswordNumber = ResetPasswordNumber.objects.create(
             email=email,
         )
-        return resetPasswordNumberModel.number
+        return resetPasswordNumber.number
 
     def _send_mail(self, email, number):
         print(f"Email: {email} Numero: {number}")
@@ -112,12 +113,12 @@ class AccountViewNewPassword(APIView):
         number = accountNewPasswordSerializer.validated_data["number"]
         password = accountNewPasswordSerializer.validated_data["password"]
 
-        resetPasswordNumberModel = get_object_or_404(
-            ResetPasswordNumberModel.objects.all(),
+        resetPasswordNumber = get_object_or_404(
+            ResetPasswordNumber.objects.all(),
             email=email,
             number=number,
         )
-        print("resetPasswordNumberModel", resetPasswordNumberModel)
+        print("resetPasswordNumber", resetPasswordNumber)
 
         user = get_user_model().objects.get(
             email=email,
@@ -125,6 +126,6 @@ class AccountViewNewPassword(APIView):
         user.set_password(password)
         user.save()
 
-        resetPasswordNumberModel.delete()
+        resetPasswordNumber.delete()
 
         return Response({"detail": "Senha alterada com sucesso"})

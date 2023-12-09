@@ -1,10 +1,11 @@
 from accounts.forms import AccountChangeForm, AccountCreationForm
-from accounts.models.account_model import AccountModel
 from django.contrib.auth.admin import UserAdmin
+
+from project.accounts.models.account import Account
 
 
 class AccountAdmin(UserAdmin):
-    model = AccountModel
+    model = Account
     add_form = AccountCreationForm
     form = AccountChangeForm
     list_display = (
