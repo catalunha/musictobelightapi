@@ -7,7 +7,7 @@ from django.db import models
 class ProfileModel(BaseModel):
     user = models.OneToOneField(
         settings.AUTH_USER_MODEL,
-        related_name="profiles",
+        related_name="profile",
         on_delete=models.PROTECT,
     )
     name = models.CharField(max_length=255)
@@ -15,7 +15,7 @@ class ProfileModel(BaseModel):
     is_coordinator = models.BooleanField(default=False)
     photo = models.ForeignKey(
         ImageModel,
-        related_name="profiles",
+        related_name="profile",
         on_delete=models.PROTECT,
         blank=True,
         null=True,

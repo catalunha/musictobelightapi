@@ -44,8 +44,5 @@ class ProfileSerializerList(serializers.ModelSerializer):
         fields = [
             "id",
             "name",
-            "description",
             "photo",
-            "is_coordinator",
-            "user",
         ]

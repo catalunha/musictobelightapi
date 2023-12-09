@@ -5,22 +5,22 @@ from bases.models import BaseModel
 from django.db import models
 
 
-class ImageModel(BaseModel):
+class AudioModel(BaseModel):
     def uploadTo(instance, fileName):
         fileNameExtension = fileName.split(".")[-1]
         now = datetime.now().strftime("%Y%m%d%M%S%f")
-        return "medias/image/{0}/{1}/{2}".format(
+        return "medias/audio/{0}/{1}/{2}".format(
             instance.id,
             now,
             fileNameExtension,
         )
 
     def save(self, *arg, **kwargs):
-        self.size = self.image.size
-        self.extension = self.image.name.split(".")[-1]
+        self.size = self.audio.size
+        self.extension = self.audio.name.split(".")[-1]
         super().save(*arg, **kwargs)
 
-    image = models.ImageField(upload_to=uploadTo)
+    audio = models.FileField(upload_to=uploadTo)
 
     name = models.CharField(
         max_length=255,
@@ -39,11 +39,11 @@ class ImageModel(BaseModel):
     deleted = models.BooleanField(default=False)
     profile = models.ForeignKey(
         ProfileModel,
-        related_name="imagesmedia",
+        related_name="audiosmedia",
         on_delete=models.SET_NULL,
         blank=True,
         null=True,
     )
 
     def __str__(self) -> str:
-        return f"ImageModel: {self.id}"
+        return f"AudioModel: {self.id}"
