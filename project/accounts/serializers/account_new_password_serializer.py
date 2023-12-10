@@ -6,7 +6,7 @@ class AccountNewPasswordSerializer(serializers.Serializer):
     number = serializers.CharField(max_length=6, min_length=6, required=True)
     password = serializers.CharField(
         required=True,
-        min_length=8,
+        min_length=6,
     )
 
     def validate(self, data):

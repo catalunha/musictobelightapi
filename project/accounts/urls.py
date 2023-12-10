@@ -6,10 +6,11 @@ from rest_framework_simplejwt.views import (
 )
 
 from project.accounts.views.account_view import (
-    AccountViewCreate,
+    AccountViewCreateConfirmCode,
+    AccountViewCreateSendCode,
     AccountViewMe,
-    AccountViewNewPassword,
-    AccountViewResetPassword,
+    AccountViewPasswordConfirmCode,
+    AccountViewPasswordSendCode,
 )
 from project.accounts.views.profile_view import (
     ProfileViewDetail,
@@ -19,7 +20,7 @@ from project.accounts.views.profile_view import (
 
 urlpatterns = [
     path(
-        "accounts/token",
+        "accounts/token/",
         TokenObtainPairView.as_view(),
         name="token_obtain_pair",
     ),
@@ -37,9 +38,14 @@ urlpatterns = [
 
 urlpatterns += [
     path(
-        "accounts/create/",
-        AccountViewCreate.as_view(),
-        name="user_create",
+        "accounts/create/sendcode/",
+        AccountViewCreateSendCode.as_view(),
+        name="user_create_sendcode",
+    ),
+    path(
+        "accounts/create/confirmcode/",
+        AccountViewCreateConfirmCode.as_view(),
+        name="user_create_confirmcode",
     ),
     path(
         "accounts/me/",
@@ -47,14 +53,14 @@ urlpatterns += [
         name="user_me",
     ),
     path(
-        "accounts/password/reset/",
-        AccountViewResetPassword.as_view(),
-        name="user_resetpassword",
+        "accounts/password/sendcode/",
+        AccountViewPasswordSendCode.as_view(),
+        name="user_resetpassword_sendcode",
     ),
     path(
-        "accounts/password/new/",
-        AccountViewNewPassword.as_view(),
-        name="user_newpassword",
+        "accounts/password/confirmcode/",
+        AccountViewPasswordConfirmCode.as_view(),
+        name="user_resetpassword_confirmcode",
     ),
 ]
 

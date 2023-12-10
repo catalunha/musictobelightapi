@@ -42,7 +42,7 @@ python manager.py makemigrations
 python manager.py migrate
 python manager.py createsuperuser
 python manager.py runserver
-
+python manage.py runserver 192.168.10.113:8000
 
 
 # tutoriais

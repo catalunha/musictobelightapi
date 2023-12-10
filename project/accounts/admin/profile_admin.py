@@ -10,5 +10,6 @@ class ProfileAdmin(admin.ModelAdmin):
         "name",
         "description",
         "is_coordinator",
+        "user",
     ]
     search_fields = ("name",)

@@ -1,9 +1,10 @@
 # flake8: noqa
 from project.accounts.views.account_view import (
-    AccountViewCreate,
+    AccountViewCreateConfirmCode,
+    AccountViewCreateSendCode,
     AccountViewMe,
-    AccountViewNewPassword,
-    AccountViewResetPassword,
+    AccountViewPasswordConfirmCode,
+    AccountViewPasswordSendCode,
 )
 from project.accounts.views.profile_view import (
     ProfileViewDetail,

@@ -33,7 +33,6 @@ class Sound(BaseModel):
         blank=True,
         null=True,
     )
-
     album = models.ForeignKey(
         Album,
         related_name="sounds",
