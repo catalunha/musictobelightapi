@@ -22,7 +22,7 @@ class AccountViewCreate(APIView):
         print("AccountViewCreate.post")
         print("request.data", request.data)
         # TODO nao deveria ser data=request.data
-        accountCreateSerializer = AccountCreateSerializer(request.data)
+        accountCreateSerializer = AccountCreateSerializer(data=request.data)
         accountCreateSerializer.is_valid(raise_exception=True)
 
         email = accountCreateSerializer.validated_data["email"]

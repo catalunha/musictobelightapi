@@ -1,5 +1,6 @@
 from django.db.models import Q
 from django.shortcuts import get_list_or_404, get_object_or_404
+from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -22,8 +23,15 @@ class AlbumViewList(APIView):
     def post(self, request):
         print("AlbumViewList.post")
         print("request.data", request.data)
+        print("type request.data", type(request.data))
+        if request.user.profile.is_coordinator is False:
+            return Response(
+                {"detail": "Você não tem permissão para criar albuns"},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
         albumSerializerUpsert = AlbumSerializerUpsert(
-            data=request,
+            data=request.data,
             partial=True,
         )
         albumSerializerUpsert.is_valid(
@@ -32,7 +40,9 @@ class AlbumViewList(APIView):
         album = Album.objects.create(
             name=albumSerializerUpsert.validated_data.get("name"),
             description=albumSerializerUpsert.validated_data.get("description", None),
-            coordinator=request.user.profile,
+            coordinator=albumSerializerUpsert.validated_data.get(
+                "coordinator", request.user.profile
+            ),
         )
         image = request.data.get("image")
         if bool(image):
@@ -42,7 +52,8 @@ class AlbumViewList(APIView):
                 profile=request.user.profile,
             )
             album.image = imageNew
-        listeners = request.data.getlist("listeners")
+        listeners = request.POST.getlist("listeners", None)
+        print("listeners", listeners)
         if bool(listeners):
             print("listeners", listeners)
             for listener in listeners:
@@ -50,11 +61,15 @@ class AlbumViewList(APIView):
                 album.listeners.add(listenerNew)
         album.save()
 
-        Response({"id": album.id})
+        return Response({"id": album.id})
 
     def get(self, request):
         print("AlbumViewList.get")
         print("request.data", request.data)
+        print("request.user", request.user)
+        print("request.user.profile", request.user.profile)
+        print("request.user.profile.id", request.user.profile.id)
+        # albums = Album.objects.all()
         albums = get_list_or_404(
             Album.objects.all(),
             Q(coordinator=request.user.profile) | Q(listeners=request.user.profile),
@@ -63,7 +78,7 @@ class AlbumViewList(APIView):
             albums,
             many=True,
         )
-        Response(albumSerializerList.data)
+        return Response(albumSerializerList.data)
 
 
 class AlbumViewDetail(APIView):
@@ -89,13 +104,24 @@ class AlbumViewDetail(APIView):
         print("AlbumViewDetail.post")
         print("request.data", request.data)
         print("id", id)
-
+        if request.user.profile.is_coordinator is False:
+            return Response(
+                {"detail": "Você não tem permissão para editar albuns"},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
         album = get_object_or_404(
             Album.objects.all(),
             id=id,
         )
+        print("album.coordinator", album.coordinator.id)
+        print("request.user.profile", request.user.profile.id)
+        if album.coordinator != request.user.profile:
+            return Response(
+                {"detail": "Você não tem permissão para editar este album"},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
         albumSerializerUpsert = AlbumSerializerUpsert(
-            data=request,
+            data=request.data,
             partial=True,
         )
         albumSerializerUpsert.is_valid(
@@ -125,7 +151,7 @@ class AlbumViewDetail(APIView):
                 profile=request.user.profile,
             )
             album.image = imageNew
-        listeners = request.data.getlist("listeners")
+        listeners = request.POST.getlist("listeners")
         if bool(listeners):
             print("listeners", listeners)
             album.listeners.clear()
@@ -139,9 +165,19 @@ class AlbumViewDetail(APIView):
         print("AlbumViewDetail.delete")
         print("request.data", request.data)
         print("id", id)
+        if request.user.profile.is_coordinator is False:
+            return Response(
+                {"detail": "Você não tem permissão para apagar albuns"},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
         album = get_object_or_404(
             Album.objects.all(),
             id=id,
         )
+        if album.coordinator is not request.user.profile:
+            return Response(
+                {"detail": "Você não tem permissão para apagar este album"},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
         album.delete()
         return Response()

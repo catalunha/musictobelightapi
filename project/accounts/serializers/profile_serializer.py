@@ -40,8 +40,8 @@ class ProfileSerializerUpsert(serializers.ModelSerializer):
 
 
 class ProfileSerializerList(serializers.ModelSerializer):
-    user = AccountSerializer(read_only=True)
     photo = ImageSerializerList(read_only=True)
+    user = AccountSerializer(read_only=True)
 
     class Meta:
         model = Profile
@@ -49,4 +49,5 @@ class ProfileSerializerList(serializers.ModelSerializer):
             "id",
             "name",
             "photo",
+            "user",
         ]

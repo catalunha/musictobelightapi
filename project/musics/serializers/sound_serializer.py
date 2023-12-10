@@ -44,9 +44,7 @@ class SoundSerializerUpsert(ModelSerializer):
     class Meta:
         model = Sound
         fields = [
-            "id",
             "name",
-            "description",
             "author",
             "album",
         ]

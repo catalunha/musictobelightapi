@@ -11,8 +11,16 @@ class Profile(BaseModel):
         related_name="profile",
         on_delete=models.PROTECT,
     )
-    name = models.CharField(max_length=255)
-    description = models.CharField(max_length=1255)
+    name = models.CharField(
+        max_length=255,
+        blank=True,
+        null=True,
+    )
+    description = models.CharField(
+        max_length=1255,
+        blank=True,
+        null=True,
+    )
     is_coordinator = models.BooleanField(default=False)
     photo = models.ForeignKey(
         Image,

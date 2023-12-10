@@ -42,7 +42,7 @@ urlpatterns += [
         name="user_create",
     ),
     path(
-        "accounts/me",
+        "accounts/me/",
         AccountViewMe.as_view(),
         name="user_me",
     ),

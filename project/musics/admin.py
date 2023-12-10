@@ -18,4 +18,6 @@ class Sound(admin.ModelAdmin):
     list_display = [
         "id",
         "name",
+        "author",
+        "album",
     ]

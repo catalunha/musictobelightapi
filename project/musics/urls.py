@@ -10,7 +10,7 @@ urlpatterns = [
         name="music_album_list",
     ),
     path(
-        "musics/album/<str:id>",
+        "musics/album/<str:id>/",
         AlbumViewDetail.as_view(),
         name="musics_album_detail",
     ),
@@ -23,7 +23,7 @@ urlpatterns += [
         name="music_sound_list",
     ),
     path(
-        "musics/sound/<str:id>",
+        "musics/sound/<str:id>/",
         SoundViewDetail.as_view(),
         name="musics_sound_detail",
     ),

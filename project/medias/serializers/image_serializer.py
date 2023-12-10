@@ -17,5 +17,4 @@ class ImageSerializerDetail(ModelSerializer):
         fields = [
             "id",
             "image",
-            "name",
         ]
