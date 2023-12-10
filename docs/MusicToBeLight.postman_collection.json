@@ -1,0 +1,1293 @@
+{
+	"info": {
+		"_postman_id": "b7f3a544-f53c-4dbb-9d50-9c583df7ca88",
+		"name": "MusicToBeLight",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6792015"
+	},
+	"item": [
+		{
+			"name": "Accounts",
+			"item": [
+				{
+					"name": "profile",
+					"item": [
+						{
+							"name": "me",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token_access}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/accounts/profile/me/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"accounts",
+										"profile",
+										"me",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "exemplo 1",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/accounts/profile/me/",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"accounts",
+												"profile",
+												"me",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Sat, 09 Dec 2023 19:26:35 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.11.0"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept, origin"
+										},
+										{
+											"key": "Allow",
+											"value": "GET, HEAD, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "352"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": \"abb4f572-3efc-43b1-b018-c0dc375099ce\",\n    \"name\": \"user 1\",\n    \"description\": \"sou o user 1\",\n    \"photo\": {\n        \"id\": \"d384de37-1fce-4db6-9514-773a9bd46288\",\n        \"image\": \"/media/medias/image/d384de37-1fce-4db6-9514-773a9bd46288/202312094710450659.png\"\n    },\n    \"is_coordinator\": true,\n    \"user\": {\n        \"id\": \"0e9f548c-ae30-487c-9944-8756ce900676\",\n        \"email\": \"user1@gmail.com\",\n        \"is_active\": true\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "all",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token_access}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/accounts/profile/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"accounts",
+										"profile",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "exemplo 1",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/accounts/profile/me/",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"accounts",
+												"profile",
+												"me",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Sat, 09 Dec 2023 19:26:35 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.11.0"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept, origin"
+										},
+										{
+											"key": "Allow",
+											"value": "GET, HEAD, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "352"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": \"abb4f572-3efc-43b1-b018-c0dc375099ce\",\n    \"name\": \"user 1\",\n    \"description\": \"sou o user 1\",\n    \"photo\": {\n        \"id\": \"d384de37-1fce-4db6-9514-773a9bd46288\",\n        \"image\": \"/media/medias/image/d384de37-1fce-4db6-9514-773a9bd46288/202312094710450659.png\"\n    },\n    \"is_coordinator\": true,\n    \"user\": {\n        \"id\": \"0e9f548c-ae30-487c-9944-8756ce900676\",\n        \"email\": \"user1@gmail.com\",\n        \"is_active\": true\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "one",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token_access}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/accounts/profile/{{profile_id}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"accounts",
+										"profile",
+										"{{profile_id}}"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "exemplo 1",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/accounts/profile/me/",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"accounts",
+												"profile",
+												"me",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Sat, 09 Dec 2023 19:26:35 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.11.0"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept, origin"
+										},
+										{
+											"key": "Allow",
+											"value": "GET, HEAD, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "352"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": \"abb4f572-3efc-43b1-b018-c0dc375099ce\",\n    \"name\": \"user 1\",\n    \"description\": \"sou o user 1\",\n    \"photo\": {\n        \"id\": \"d384de37-1fce-4db6-9514-773a9bd46288\",\n        \"image\": \"/media/medias/image/d384de37-1fce-4db6-9514-773a9bd46288/202312094710450659.png\"\n    },\n    \"is_coordinator\": true,\n    \"user\": {\n        \"id\": \"0e9f548c-ae30-487c-9944-8756ce900676\",\n        \"email\": \"user1@gmail.com\",\n        \"is_active\": true\n    }\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "user",
+					"item": [
+						{
+							"name": "me",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token_access}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/accounts/me/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"accounts",
+										"me",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "exemplo 1",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/accounts/me/",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"accounts",
+												"me",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Sat, 09 Dec 2023 19:19:16 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.11.0"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept, origin"
+										},
+										{
+											"key": "Allow",
+											"value": "GET, HEAD, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "88"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": \"0e9f548c-ae30-487c-9944-8756ce900676\",\n    \"email\": \"user1@gmail.com\",\n    \"is_active\": true\n}"
+								}
+							]
+						},
+						{
+							"name": "create",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n \"email\":\"{{email}}\",\n \"password\":\"{{password}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/accounts/create/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"accounts",
+										"create",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "exemplo 2 - 400 - email repetido",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n \"email\":\"user3@gmail.com\",\n \"password\":\"user3-123QWE!@#\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/accounts/create/",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"accounts",
+												"create",
+												""
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Sat, 09 Dec 2023 19:34:02 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.11.0"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept, origin"
+										},
+										{
+											"key": "Allow",
+											"value": "POST, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "42"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"email\": [\n        \"Esse campo deve ser  único.\"\n    ]\n}"
+								},
+								{
+									"name": "exemplo 1 - 200",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n \"email\":\"user3@gmail.com\",\n \"password\":\"user3-123QWE!@#\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/accounts/create/",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"accounts",
+												"create",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Sat, 09 Dec 2023 19:35:10 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.11.0"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept, origin"
+										},
+										{
+											"key": "Allow",
+											"value": "POST, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "45"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": \"13c11477-0ba5-4cc5-8402-961b8b077958\"\n}"
+								}
+							]
+						},
+						{
+							"name": "reset password",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n \"email\":\"{{email}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/accounts/password/reset/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"accounts",
+										"password",
+										"reset",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "new password",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n \"email\":\"{{email}}\",\n \"number\":\"333474\",\n \"password\":\"user3a-123QWE!@#\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/accounts/password/new/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"accounts",
+										"password",
+										"new",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "token",
+					"item": [
+						{
+							"name": "obtem ou login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n \"email\":\"{{email}}\",\n \"password\":\"{{password}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/accounts/token",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"accounts",
+										"token"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "exemplo 1",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n \"email\":\"user1@gmail.com\",\n \"password\":\"user1-123QWE!@#\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/accounts/token",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"accounts",
+												"token"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Sat, 09 Dec 2023 19:20:09 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.11.0"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept, origin"
+										},
+										{
+											"key": "Allow",
+											"value": "POST, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "582"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"refresh\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTcwMjIzNjAwOSwiaWF0IjoxNzAyMTQ5NjA5LCJqdGkiOiJkOTNlZGQyZDI4Nzg0OGU3YjdmMDJmN2MxZjU3MzE5MiIsInVzZXJfaWQiOiIwZTlmNTQ4Yy1hZTMwLTQ4N2MtOTk0NC04NzU2Y2U5MDA2NzYifQ.1oehx_gdqGuLyv8tI2M7otZweut8BaVVtDuh5OhphtA\",\n    \"access\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAyMTUzMjA5LCJpYXQiOjE3MDIxNDk2MDksImp0aSI6IjM2ZmFiYzM5YTFjNDRmZWM4ZjJiNDI0Y2E3ODdmYWVmIiwidXNlcl9pZCI6IjBlOWY1NDhjLWFlMzAtNDg3Yy05OTQ0LTg3NTZjZTkwMDY3NiJ9.exKvi8zmJk3l3vi0xImybLmpJ5NgUGSyBNxD_sqn3KE\"\n}"
+								}
+							]
+						},
+						{
+							"name": "verify",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n \"token\": \"{{access}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/accounts/token/verify/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"accounts",
+										"token",
+										"verify",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "exemplo 1",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n \"token\": \"{{access}}\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/accounts/token/verify/",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"accounts",
+												"token",
+												"verify",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Sat, 09 Dec 2023 19:16:06 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.11.0"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept, origin"
+										},
+										{
+											"key": "Allow",
+											"value": "POST, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "2"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": "{}"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Musics",
+			"item": [
+				{
+					"name": "album",
+					"item": [
+						{
+							"name": "me",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token_access}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/musics/album/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"musics",
+										"album",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "one",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token_access}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/musics/album/491f3940-28ce-41d8-a02e-4a8520c2781c/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"musics",
+										"album",
+										"491f3940-28ce-41d8-a02e-4a8520c2781c",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "one",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token_access}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/musics/album/491f3940-28ce-41d8-a02e-4a8520c2781c/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"musics",
+										"album",
+										"491f3940-28ce-41d8-a02e-4a8520c2781c",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "one",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token_access}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "description",
+											"value": "album 3b",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/home/catalunha/Pictures/albums/album2.png"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/musics/album/491f3940-28ce-41d8-a02e-4a8520c2781c/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"musics",
+										"album",
+										"491f3940-28ce-41d8-a02e-4a8520c2781c",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token_access}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n \"name\":\"album 4\",\n \"description\":\"este é o album 4\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/musics/album/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"musics",
+										"album",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "sound",
+					"item": [
+						{
+							"name": "by album",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token_access}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/musics/sound/?album=002275cc-14b7-4306-b0ef-c6681c92fb87",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"musics",
+										"sound",
+										""
+									],
+									"query": [
+										{
+											"key": "album",
+											"value": "002275cc-14b7-4306-b0ef-c6681c92fb87"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "all",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token_access}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/musics/sound/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"musics",
+										"sound",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "one",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token_access}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/musics/sound/480b26c1-61ce-4559-af30-ba65b33eca8b/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"musics",
+										"sound",
+										"480b26c1-61ce-4559-af30-ba65b33eca8b",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "one",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token_access}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "musica 2",
+											"type": "text"
+										},
+										{
+											"key": "author",
+											"value": "cc62f72f-6618-4975-ab78-2e1dc66fdb55",
+											"type": "text"
+										},
+										{
+											"key": "album",
+											"value": "8458a6d1-c742-4f38-8ca4-562907be6d35",
+											"type": "text"
+										},
+										{
+											"key": "audio",
+											"type": "file",
+											"src": "/home/catalunha/Pictures/audios/contando.wav"
+										},
+										{
+											"key": "description",
+											"value": "esta é a musica 2",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/musics/sound/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"musics",
+										"sound",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "one",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token_access}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "musica 2ab",
+											"type": "text"
+										},
+										{
+											"key": "author",
+											"value": "cc62f72f-6618-4975-ab78-2e1dc66fdb55",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "album",
+											"value": "8458a6d1-c742-4f38-8ca4-562907be6d35",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "audio",
+											"type": "file",
+											"src": "/home/catalunha/Pictures/audios/contando.wav"
+										},
+										{
+											"key": "description",
+											"value": "esta é a musica 2a",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/musics/sound/480b26c1-61ce-4559-af30-ba65b33eca8b/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"musics",
+										"sound",
+										"480b26c1-61ce-4559-af30-ba65b33eca8b",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
