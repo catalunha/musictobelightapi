@@ -67,7 +67,8 @@ class SoundViewList(APIView):
     def get(self, request):
         print("SoundByAlbumViewList.get")
         print("request.data", request.data)
-        albumId = request.GET.get("album", None)
+        albumId = request.GET.get("albumId", None)
+        print("albumId: ", albumId)
         if albumId is None:
             # sounds = Sound.objects.all()
             return Response(

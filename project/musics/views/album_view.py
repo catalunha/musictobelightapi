@@ -1,5 +1,5 @@
 from django.db.models import Q
-from django.shortcuts import get_list_or_404, get_object_or_404
+from django.shortcuts import get_object_or_404
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
@@ -70,8 +70,11 @@ class AlbumViewList(APIView):
         print("request.user.profile", request.user.profile)
         print("request.user.profile.id", request.user.profile.id)
         # albums = Album.objects.all()
-        albums = get_list_or_404(
-            Album.objects.all(),
+        # albums = get_list_or_404(
+        #     Album.objects.all(),
+        #     Q(coordinator=request.user.profile) | Q(listeners=request.user.profile),
+        # )
+        albums = Album.objects.filter(
             Q(coordinator=request.user.profile) | Q(listeners=request.user.profile),
         )
         albumSerializerList = AlbumSerializerList(
