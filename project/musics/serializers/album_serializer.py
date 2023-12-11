@@ -22,6 +22,7 @@ class AlbumSerializerList(ModelSerializer):
 class AlbumSerializerDetail(ModelSerializer):
     coordinator = ProfileSerializerList(read_only=True)
     listeners = ProfileSerializerList(read_only=True, many=True)
+    image = ImageSerializerList(read_only=True)
 
     class Meta:
         model = Album

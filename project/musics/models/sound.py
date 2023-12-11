@@ -11,7 +11,7 @@ class Sound(BaseModel):
     name = models.CharField(
         max_length=255,
     )
-    description = models.CharField(
+    description = models.TextField(
         max_length=1255,
         blank=True,
         null=True,

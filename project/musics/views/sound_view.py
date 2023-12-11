@@ -72,7 +72,7 @@ class SoundViewList(APIView):
         if albumId is None:
             # sounds = Sound.objects.all()
             return Response(
-                {"detail": "Só é possível listar musicas de algum album."},
+                {"detail": "Album com este id não foi encontrado."},
                 status=status.HTTP_400_BAD_REQUEST,
             )
         else:
