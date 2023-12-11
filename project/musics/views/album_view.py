@@ -168,6 +168,9 @@ class AlbumViewDetail(APIView):
         print("AlbumViewDetail.delete")
         print("request.data", request.data)
         print("id", id)
+        print(
+            "request.user.profile.is_coordinator", request.user.profile.is_coordinator
+        )
         if request.user.profile.is_coordinator is False:
             return Response(
                 {"detail": "Você não tem permissão para apagar albuns"},
@@ -177,7 +180,7 @@ class AlbumViewDetail(APIView):
             Album.objects.all(),
             id=id,
         )
-        if album.coordinator is not request.user.profile:
+        if album.coordinator.id != request.user.profile.id:
             return Response(
                 {"detail": "Você não tem permissão para apagar este album"},
                 status=status.HTTP_400_BAD_REQUEST,

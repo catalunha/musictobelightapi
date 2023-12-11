@@ -1,6 +1,6 @@
 from rest_framework.serializers import ModelSerializer
 
-from project.accounts.serializers.profile_serializer import ProfileSerializerList
+# from project.accounts.serializers.profile_serializer import ProfileSerializerList
 from project.medias.models.image import Image
 
 
@@ -13,7 +13,7 @@ class ImageSerializerList(ModelSerializer):
 
 
 class ImageSerializerDetail(ModelSerializer):
-    profile = ProfileSerializerList(read_only=True)
+    # profile = ProfileSerializerList(read_only=True)
 
     class Meta:
         model = Image
@@ -24,5 +24,5 @@ class ImageSerializerDetail(ModelSerializer):
             "extension",
             "size",
             "deleted",
-            "profile",
+            # "profile",
         ]
