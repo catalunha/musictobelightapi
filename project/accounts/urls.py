@@ -14,6 +14,7 @@ from project.accounts.views.account_view import (
 )
 from project.accounts.views.profile_view import (
     ProfileViewDetail,
+    ProfileViewGetByEmail,
     ProfileViewList,
     ProfileViewMe,
 )
@@ -66,18 +67,23 @@ urlpatterns += [
 
 urlpatterns += [
     path(
-        "accounts/profile/",
-        ProfileViewList.as_view(),
-        name="profile_list",
-    ),
-    path(
         "accounts/profile/me/",
         ProfileViewMe.as_view(),
         name="profile_me",
     ),
     path(
+        "accounts/profile/getbyemail/<str:email>/",
+        ProfileViewGetByEmail.as_view(),
+        name="profile_getbyemail",
+    ),
+    path(
         "accounts/profile/<str:id>/",
         ProfileViewDetail.as_view(),
         name="profile_detail",
+    ),
+    path(
+        "accounts/profile/",
+        ProfileViewList.as_view(),
+        name="profile_list",
     ),
 ]

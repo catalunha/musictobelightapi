@@ -102,3 +102,21 @@ class ProfileViewMe(APIView):
         profile = user.profile
         profileSerializer = ProfileSerializerDetail(profile)
         return Response(profileSerializer.data)
+
+
+class ProfileViewGetByEmail(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request, email):
+        print("ProfileViewGetByEmail.get")
+        print("request.data", request.data)
+        print("email", email)
+
+        profile = get_object_or_404(
+            Profile.objects.all(),
+            user__email=email,
+        )
+
+        profileSerializer = ProfileSerializerList(profile)
+
+        return Response(profileSerializer.data)

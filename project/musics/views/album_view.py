@@ -67,16 +67,17 @@ class AlbumViewList(APIView):
         print("AlbumViewList.get")
         print("request.data", request.data)
         print("request.user", request.user)
-        print("request.user.profile", request.user.profile)
+        print("request.user.profile", request.user.profile.id)
         print("request.user.profile.id", request.user.profile.id)
         # albums = Album.objects.all()
-        # albums = get_list_or_404(
-        #     Album.objects.all(),
+        albums = Album.objects.filter(
+            coordinator=request.user.profile
+        ) | Album.objects.filter(listeners=request.user.profile)
+        # albums = Album.objects.filter(
         #     Q(coordinator=request.user.profile) | Q(listeners=request.user.profile),
         # )
-        albums = Album.objects.filter(
-            Q(coordinator=request.user.profile) | Q(listeners=request.user.profile),
-        )
+        # albums = Album.objects.filter(coordinator=request.user.profile.id)
+        # albums = Album.objects.filter(listeners=request.user.profile.id)
         albumSerializerList = AlbumSerializerList(
             albums,
             many=True,
@@ -123,6 +124,8 @@ class AlbumViewDetail(APIView):
                 {"detail": "Você não tem permissão para editar este album"},
                 status=status.HTTP_400_BAD_REQUEST,
             )
+        print("listeners: ", request.POST.getlist("listeners"))
+
         albumSerializerUpsert = AlbumSerializerUpsert(
             data=request.data,
             partial=True,
