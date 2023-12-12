@@ -1,4 +1,4 @@
-from django.shortcuts import get_list_or_404, get_object_or_404
+from django.shortcuts import get_object_or_404
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
@@ -76,10 +76,7 @@ class SoundViewList(APIView):
                 status=status.HTTP_400_BAD_REQUEST,
             )
         else:
-            sounds = get_list_or_404(
-                Sound.objects.all(),
-                album=albumId,
-            )
+            sounds = Sound.objects.filter(album=albumId)
         soundSerializerList = SoundSerializerList(
             sounds,
             many=True,

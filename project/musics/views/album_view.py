@@ -67,17 +67,27 @@ class AlbumViewList(APIView):
         print("AlbumViewList.get")
         print("request.data", request.data)
         print("request.user", request.user)
-        print("request.user.profile", request.user.profile.id)
+        print("request.user.profile", request.user.profile)
         print("request.user.profile.id", request.user.profile.id)
         # albums = Album.objects.all()
+
+        albums1 = Album.objects.filter(coordinator=request.user.profile.id)
+        print("albums1: ", len(albums1))
+
+        albums2 = Album.objects.filter(listeners=request.user.profile.id)
+        print("albums2: ", len(albums2))
+
+        albums3 = Album.objects.filter(
+            coordinator=request.user.profile.id
+        ) | Album.objects.filter(listeners=request.user.profile.id)
+        print("albums3: ", len(albums3))
+
         albums = Album.objects.filter(
-            coordinator=request.user.profile
-        ) | Album.objects.filter(listeners=request.user.profile)
-        # albums = Album.objects.filter(
-        #     Q(coordinator=request.user.profile) | Q(listeners=request.user.profile),
-        # )
-        # albums = Album.objects.filter(coordinator=request.user.profile.id)
-        # albums = Album.objects.filter(listeners=request.user.profile.id)
+            Q(coordinator=request.user.profile.id)
+            | Q(listeners=request.user.profile.id)
+        ).distinct()
+        print("albums: ", len(albums))
+
         albumSerializerList = AlbumSerializerList(
             albums,
             many=True,
